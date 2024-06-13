@@ -13,6 +13,7 @@ start_stack = 10000
 player_stacks = [start_stack]*player_n
 deck = []
 
+
 pot = 0
 dealer = 1
 min_bet = 200

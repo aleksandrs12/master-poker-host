@@ -3,7 +3,7 @@ import time
 file_object = open('logs1.txt', 'a')
 
 
-def what_to_do(toCall):
+def what_to_do(toCall, hand, river, latest_actions):
     if toCall != 0:
         return 'k'
     else:
@@ -17,13 +17,14 @@ while True:
     file_object.write(s+'\n')
 
     s = input()
+    latest_actions = s.split()
     file_object.write(s+'\n')
 
     s = input()
     toCall = int(s)
     file_object.write(s+'\n')
 
-    action = what_to_do(toCall)
+    action = what_to_do(toCall, cards, [], latest_actions)
     print(action)
     file_object.write(action+'\n')
     
@@ -33,7 +34,7 @@ while True:
         file_object.write(card_input+'\n')
         if card_input != 'i':
             river = [[0, 0], [0, 0], [0, 0]]
-            river[0][0], river[0][1], river[1][0], river[1][1], river[2][0], river[2][1] = card_input.split(' ')
+            river[0][0], river[0][1], river[1][0], river[1][1], river[2][0], river[2][1] = map(int, card_input.split(' '))
         s = input()
         file_object.write(s+'\n')
 
@@ -41,7 +42,7 @@ while True:
         toCall = int(s)
         file_object.write(s+'\n')
 
-        action = what_to_do(toCall)
+        action = what_to_do(toCall, cards, river, latest_actions)
         print(action)
         file_object.write(action+'\n')
         
@@ -52,6 +53,7 @@ while True:
         file_object.write(card_input+'\n')
         if card_input != 'i':
             river.append(card_input.split(' '))
+            river[-1][0], river[-1][1] = int(river[-1][0]), int(river[-1][1])
         s = input()
         file_object.write(s+'\n')
 
@@ -59,7 +61,7 @@ while True:
         toCall = int(s)
         file_object.write(s+'\n')
 
-        action = what_to_do(toCall)
+        action = what_to_do(toCall, cards, river, latest_actions)
         print(action)
         file_object.write(action+'\n')
         
@@ -69,14 +71,15 @@ while True:
         file_object.write(card_input+'\n')
         if card_input != 'i':
             river.append(card_input.split(' '))
+            river[-1][0], river[-1][1] = int(river[-1][0]), int(river[-1][1])
         s = input()
-        file_object.write(s+'\n')
+        file_object.write(str(river)+'\n')
 
         s = input()
         toCall = int(s)
         file_object.write(s+'\n')
 
-        action = what_to_do(toCall)
+        action = what_to_do(toCall, cards, river, latest_actions)
         print(action)
         file_object.write(action+'\n')
     
