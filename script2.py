@@ -82,6 +82,10 @@ while True:
         action = what_to_do(toCall, cards, river, latest_actions)
         print(action)
         file_object.write(action+'\n')
+    winner_id = int(input())
+    file_object.write(str(winner_id)+'\n')
+    pot = int(input())
+    file_object.write(str(pot)+'\n')
     
         
 file_object.close()

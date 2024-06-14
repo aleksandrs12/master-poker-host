@@ -1,6 +1,7 @@
 import time
 
 file_object = open('logs1.txt', 'a')
+pot = 10000
 
 
 def what_to_do(toCall, hand, river, latest_actions):
@@ -9,7 +10,7 @@ def what_to_do(toCall, hand, river, latest_actions):
     else:
         return 'c'
 
-
+bank = 0
 while True:
     s = input()
     if s != 'i':
@@ -82,6 +83,10 @@ while True:
         action = what_to_do(toCall, cards, river, latest_actions)
         print(action)
         file_object.write(action+'\n')
+    winner_id = int(input())
+    file_object.write(str(winner_id)+'\n')
+    pot = int(input())
+    file_object.write(str(pot)+'\n')
     
         
 file_object.close()

@@ -9,10 +9,12 @@ import os
 player_n = 4
 player_hands = []
 river = []
-start_stack = 10000
+start_stack = 2000
 player_stacks = [start_stack]*player_n
 deck = []
 
+games_played = 0
+file_object = open('records.txt', 'a')
 
 pot = 0
 dealer = 1
@@ -194,43 +196,61 @@ def take_bets():
                 
 last_actions = ['i']*player_n
     
-while not input():
-    start_hand()
-        
-    print(player_hands)
-    print(player_stacks)
-    print()
-    write_hands()
-    
-    take_bets()
-                
-    river.append(pick_card())
-    river.append(pick_card())
-    river.append(pick_card())
-    print(river)
-    for i in range(player_n):
-        s = str(river[0][0])+' '+str(river[0][1])+' '+str(river[1][0])+' '+str(river[1][1])+' '+str(river[2][0])+' '+str(river[2][1])
-        write_output(i, s)
-        
-    take_bets()
-    
-    river.append(pick_card())
-    for i in range(player_n):
-        s = str(river[3][0])+' '+str(river[3][1])
-        write_output(i, s)
-    take_bets()
-    
-    river.append(pick_card())
-    for i in range(player_n):
-        s = str(river[4][0])+' '+str(river[4][1])
-        write_output(i, s)
-    take_bets()
-    
-    print(player_hands)
-    player_stacks[find_winning_hand(river, player_hands, is_playing)] += pot
-    
+for game_id in range(10):
+    player_stacks = [start_stack]*player_n
+    while True:
+        start_hand()
+        still_standing = []
+        for n in range(len(is_playing)):
+            if is_playing[n]:
+                still_standing.append(n)
+        if len(still_standing) == 1:
+            file_object.write(str(still_standing[0]))
+            games_played += 1
+            break
             
-    print(player_stacks)
+        print(player_hands)
+        print(player_stacks)
+        print()
+        write_hands()
+        
+        take_bets()
+                    
+        river.append(pick_card())
+        river.append(pick_card())
+        river.append(pick_card())
+        print(river)
+        for i in range(player_n):
+            s = str(river[0][0])+' '+str(river[0][1])+' '+str(river[1][0])+' '+str(river[1][1])+' '+str(river[2][0])+' '+str(river[2][1])
+            write_output(i, s)
+            
+        take_bets()
+        
+        river.append(pick_card())
+        for i in range(player_n):
+            s = str(river[3][0])+' '+str(river[3][1])
+            write_output(i, s)
+        take_bets()
+        
+        river.append(pick_card())
+        for i in range(player_n):
+            s = str(river[4][0])+' '+str(river[4][1])
+            write_output(i, s)
+        take_bets()
+        
+        
+        winner_id = find_winning_hand(river, player_hands, is_playing)
+        player_stacks[winner_id] += pot
+        for i in range(player_n):
+            write_output(i, str(winner_id))
+            write_output(i, str(player_stacks[i]))
+        print(player_hands)
+        
+        
+                
+        print(player_stacks)
+        #pid who won
+        #your pot
 
 
 
