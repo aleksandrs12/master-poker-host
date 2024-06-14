@@ -65,6 +65,9 @@ def start_hand():
     player_bets = [0]*player_n
     to_call = min_bet
     is_playing = [1]*player_n
+    for i in range(player_n):
+        if player_stacks[i] <= 0:
+            is_playing[i] = 0
     
     river = []
     pot = 0
