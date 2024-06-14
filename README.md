@@ -18,6 +18,7 @@ To communicate with the master program the player scripts must use stdin and std
   Here you print out your action 'f' - fold 'c' - check 'k' - call 'r200' - raise 200 or any other number as long as its more than the minimal bet
 
 This is reapeated until the hand ends.
+When the hand ends you are expected to take two `input()` the first being the winning player id and the second being your current bank
 
 ## 📦 Usage
 
