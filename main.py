@@ -6,7 +6,7 @@ from collections import Counter
 import sys
 import os
 
-player_n = 3
+player_n = 4
 player_hands = []
 river = []
 start_stack = 10000
@@ -82,7 +82,8 @@ def start_hand():
         
 processes = [subprocess.Popen(['python3', 'script1.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True),
              subprocess.Popen(['python3', 'script2.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True),
-             subprocess.Popen(['python3', 'script3.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)]
+             subprocess.Popen(['python3', 'script3.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True),
+             subprocess.Popen(['python3', 'script4.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)]
 
 
 
@@ -223,7 +224,7 @@ while not input():
     take_bets()
     
     print(player_hands)
-    player_stacks[find_winning_hand(river, player_hands)] += pot
+    player_stacks[find_winning_hand(river, player_hands, is_playing)] += pot
     
             
     print(player_stacks)

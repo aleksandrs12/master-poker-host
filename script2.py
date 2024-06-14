@@ -1,6 +1,6 @@
 import time
 
-file_object = open('logs1.txt', 'a')
+file_object = open('logs2.txt', 'a')
 
 
 def what_to_do(toCall, hand, river, latest_actions):

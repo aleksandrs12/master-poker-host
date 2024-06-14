@@ -55,7 +55,11 @@ def evaluate_hand(cards):
     return (0, tuple(unique_values))
 
 # Main function to determine the winning hand
-def find_winning_hand(river, hands):
+def find_winning_hand(river, hands, is_playing):
+    for i in range(len(hands)-1, -1, -1):
+        if is_playing[i] == 0:
+            hands.pop(i)
+        
     best_rank = (-1,)
     best_hand_index = -1
     
