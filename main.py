@@ -292,7 +292,7 @@ def start_hand():
 win_count = [0]*player_n
 hand_count = [0]*player_n
 total_hands_won = [0]*player_n
-for i in range(3000):
+for i in range(10):
     for player in players:
         player.bank = 2000
         dealer = 0

@@ -27,6 +27,9 @@ def generate_ranks():
         ranks[(convert[l[0]], convert[l[1]], convert[l[2]])] = i
     return ranks
 
+ranks = generate_ranks()
+
+
     
     
     
